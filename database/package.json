@@ -1,0 +1,24 @@
+{
+  "name": "CassandraConnectionTest",
+  "version": "1.0.0",
+  "description": "cassandra connection test",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://its-git.fh-salzburg.ac.at/eduard.hirsch/bde-cassandra-docker-cluster.git"
+  },
+  "keywords": [
+    "cassandra",
+    "node connect",
+    "CQL"
+  ],
+  "author": "Eduard Hirsch",
+  "license": "ISC",
+  "devDependencies": {},
+  "dependencies": {
+    "cassandra-driver": "^4.2.0"
+  }
+}

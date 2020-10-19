@@ -1,0 +1,46 @@
+version: '3.7'
+
+# 3 node cluster
+# If you see exit code 137 (OOM killer) then ensure Docker has access to more resources
+# connect with cqlsh (prefix with "winpty" on windows machines):
+#    docker run -it --network compose-cassandra-cluster_cassandra-cluster --rm cassandra cqlsh cassandra-main
+services:
+  cassandra-main:
+    image: cassandra
+    ports:
+      - "9042:9042"   # Native transport
+      - "7199:7199"   # JMX
+      - "9160:9160"   # Thrift clients
+    environment:
+      - HEAP_NEWSIZE=12M
+      - MAX_HEAP_SIZE=64M
+    networks:
+      - "cassandra-cluster"
+    volumes:
+      - ./youtube-new:/data
+  cassandra-node:
+    image: cassandra-node
+    build:
+      context: .
+      dockerfile: Dockerfile_nc
+    command: >
+      /bin/bash -c "
+        while ! nc -z cassandra-main 9042;
+        do
+          echo 'Waiting for seed node ...';
+          sleep 2;
+        done;
+        docker-entrypoint.sh cassandra -f;
+      "
+    environment:
+      - CASSANDRA_SEEDS=cassandra-main
+      - HEAP_NEWSIZE=12M #https://github.com/docker-library/cassandra/issues/94
+      - MAX_HEAP_SIZE=64M
+    depends_on:
+      - "cassandra-main"
+    networks:
+      - "cassandra-cluster"
+    volumes:
+      - ./youtube-new:/data
+networks:
+  cassandra-cluster:
