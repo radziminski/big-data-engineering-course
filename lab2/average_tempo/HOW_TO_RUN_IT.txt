@@ -1,0 +1,14 @@
+1.) Compile java project with "mvn clean install"
+2.) copy average_tempo.jar from target folder to top folder
+3.) Open terminal (cmd) in top folder and do 
+scp average_tempo.jar groupB04@node1.bde.fh-salzburg.ac.at:
+4.) Type in password
+5.) connect to server thorugh ssh:
+ssh -D 8080 groupB04@node1.bde.fh-salzburg.ac.at
+6.) run the jar file on spotify tracks (type your own unqie output folder):
+hadoop jar average_tempo.jar fh.its.bde.wordcount.WordCountApp spotify_tracks.csv [OUTPUT FOLDER NAME]
+7.) Copy the results:
+hadoop fs -copyToLocal [OUTPUT FOLDER NAME]
+8.) If it says that this doesn;t exist it means something has broken in java code and you must search for errors and fix them, then repeate whole process.
+9.) If it succeded, see the results with:
+cat [OUTPUT FOLDER NAME]/part-r-00000
