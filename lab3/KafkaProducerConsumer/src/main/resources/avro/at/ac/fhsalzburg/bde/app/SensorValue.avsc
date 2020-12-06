@@ -1,0 +1,19 @@
+{
+    "namespace": "at.ac.fhsalzburg.bde.app",
+    "type": "record",
+    "name": "SensorValue",
+    "fields": [
+        {
+            "name": "id",
+            "type": "long"
+        },
+        {
+            "name": "uuid",
+            "type": "string"
+        },
+        {
+            "name": "value",
+            "type": "double"
+        }
+    ]
+}
