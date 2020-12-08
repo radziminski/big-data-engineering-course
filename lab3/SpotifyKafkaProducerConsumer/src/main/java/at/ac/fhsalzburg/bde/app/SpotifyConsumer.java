@@ -3,24 +3,19 @@ package at.ac.fhsalzburg.bde.app;
 import java.io.IOException;
 import java.time.Duration;
 
-// import java.util.Collections;
-// import java.util.Properties;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.kafka.clients.consumer.*;
-// import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.errors.WakeupException;
-// import org.apache.kafka.common.serialization.LongDeserializer;
-// import org.apache.kafka.common.serialization.StringDeserializer;
 
 public class SpotifyConsumer implements Runnable {
     private final static String CLIENTID = SpotifyConsumer.class.getName();
     private final static String GROUPID = "SpotifyConsumerGroup";
     private final AtomicBoolean closed = new AtomicBoolean(false);
-    private final static int POLL_DURATION_MS = 1000;
+    public final static int POLL_DURATION_MS = 1000;
 
     private final Consumer<Long, String> consumer;
 
@@ -29,12 +24,16 @@ public class SpotifyConsumer implements Runnable {
         consumer.subscribe(Collections.singletonList(SpotifyProducer.TOPIC));
     }
 
-    private String[] getValuesFromJson(String json) {
-        String[] values = json.substring(1,  json.length() - 2).replace("\"", "").replace(" ", "").split(",");
+    private String[] getValuesFromArray(String str) {
+        String[] values = new String[0];
+        if (str.length() < 6) return values;
+        
+        values = str.substring(1,  str.length() - 2).replace("\"", "").replace(" ", "").split(",");
         return values;
     }
 
     public void run() {
+        System.out.println("=== SPOTIFY CONSUMER ===");
         try {
             System.out.println("=> Subscribed to " + SpotifyProducer.TOPIC);
             System.out.println("==> Waiting for messages...");
@@ -42,11 +41,14 @@ public class SpotifyConsumer implements Runnable {
                 ConsumerRecords<Long, String> records = consumer.poll(Duration.ofMillis(POLL_DURATION_MS));
                 System.out.println("==> After poll (enter to exit); records: " + records.count());
                 for (ConsumerRecord<Long, String> record : records) {
-                    String[] values = getValuesFromJson(record.value());
+                    String[] values;
+                    values = getValuesFromArray(record.value());
+            
                     // Wrong record format
                     if (values.length != 3) continue;
+
                     System.out.printf(
-                            "[Partition: %d, Offset: %d, MsgKey: %s] id: %s, year: %s, tempo: %s;\n",
+                            "[Partition: %d, Offset: %d, MsgKey: %s] Id: %s, Year: %s, Tempo: %s;\n",
                             record.partition(),
                             record.offset(),
                             record.key(),
@@ -65,7 +67,6 @@ public class SpotifyConsumer implements Runnable {
         }
     }
 
-    // Shutdown hook which can be called from a separate thread
     void shutdown() {
         closed.set(true);
         consumer.wakeup();
@@ -73,17 +74,16 @@ public class SpotifyConsumer implements Runnable {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        // start consuming thread
         SpotifyConsumer r = new SpotifyConsumer(Helper.createConsumer(CLIENTID, GROUPID));
         Thread t = new Thread(r);
         t.start();
 
-        System.out.println("press any key to exit");
+        System.out.println("Press any key to exit");
         System.in.read();
 
-        System.out.println("shutting down ...");
+        System.out.println("Shutting down ...");
         r.shutdown();
         t.join();
-        System.out.println("done.");
+        System.out.println("Done.");
     }
 }

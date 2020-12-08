@@ -4,16 +4,15 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>BDE</groupId>
-    <artifactId>kafkaproducerconsumer</artifactId>
+    <artifactId>spotifykafkaproducerconsumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>KafkaProducerConsumer</name>
+    <name>SpotifyKafkaProducerConsumer</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <java.version>8</java.version>
-        <avro.version>1.9.1</avro.version>
         <gson.version>2.2.4</gson.version>
         <kafka.version>2.5.0</kafka.version>
         <confluent.version>5.5.1</confluent.version>
@@ -50,19 +49,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.confluent</groupId>
-            <artifactId>kafka-avro-serializer</artifactId>
-            <version>${confluent.version}</version>
-        </dependency>
-        <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.avro</groupId>
-            <artifactId>avro</artifactId>
-            <version>${avro.version}</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -83,42 +72,6 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <executions>
-                    <execution>
-                        <id>consumer</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>at.ac.fhsalzburg.bde.app.IOTConsumer</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>producer</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>at.ac.fhsalzburg.bde.app.IOTProducer</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>produceravro</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>at.ac.fhsalzburg.bde.app.IOTProducerAvro</mainClass>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>emailproducer</id>
-                        <goals>
-                            <goal>java</goal>
-                        </goals>
-                        <configuration>
-                            <mainClass>at.ac.fhsalzburg.bde.app.EmailProducer</mainClass>
-                        </configuration>
-                    </execution>
                      <execution>
                         <id>spotifyproducer</id>
                         <goals>
@@ -147,7 +100,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>at.ac.fhsalzburg.bde.app.IOTProducerAvro</mainClass>
+                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyProducer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -166,27 +119,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-maven-plugin</artifactId>
-                <version>${avro.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>schema</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirectory>${project.basedir}/src/main/resources/avro/at/ac/fhsalzburg/bde/app/
-                            </sourceDirectory>
-                            <includes>
-                                <include>SensorValue.avsc</include>
-                            </includes>
-                            <outputDirectory>${project.build.directory}/generated-sources</outputDirectory>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
                 <groupId>io.confluent</groupId>
                 <artifactId>kafka-schema-registry-maven-plugin</artifactId>
                 <version>${confluent.version}</version>
@@ -195,7 +127,7 @@
                         <param>http://localhost:8081</param>
                     </schemaRegistryUrls>
                     <subjects>
-                        <transactions-value>src/main/resources/avro/at/ac/fhsalzburg/bde/app/SensorValue.avsc
+                        <transactions-value>src/main/resources/selected_spotify_tracks.csv
                         </transactions-value>
                     </subjects>
                     <outputDirectory/>

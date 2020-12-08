@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * Unit test for simple App.
  */
-public class IOTKafkaTest
+public class SpotifyKafkaTest
     extends TestCase
 {
     /**
@@ -17,7 +17,7 @@ public class IOTKafkaTest
      *
      * @param testName name of the test case
      */
-    public IOTKafkaTest(String testName )
+    public SpotifyKafkaTest(String testName )
     {
         super( testName );
     }
@@ -27,7 +27,7 @@ public class IOTKafkaTest
      */
     public static Test suite()
     {
-        return new TestSuite( IOTKafkaTest.class );
+        return new TestSuite( SpotifyKafkaTest.class );
     }
 
     /**
@@ -36,7 +36,7 @@ public class IOTKafkaTest
     public void testProducerApp() throws InterruptedException {
         int message_count = 10;
         DummyProducer<Long, String> dp = new DummyProducer<>();
-        Thread t = new Thread(new IOTProducer(message_count, dp));
+        Thread t = new Thread(new SpotifyProducer(dp, message_count));
         t.start();
         t.join();
 
@@ -49,14 +49,14 @@ public class IOTKafkaTest
     public void testConsumer() throws IOException, InterruptedException {
         DummyConsumer dc = new DummyConsumer();
         // start consuming thread
-        IOTConsumer r = new IOTConsumer(dc);
+        SpotifyConsumer r = new SpotifyConsumer(dc);
         Thread t = new Thread(r);
         t.start();
 
         // Wait 4 iterations
         // each iteration last one second
         int POLL_COUNT = 4;
-        long WAIT_MILLIS = 1000 * POLL_COUNT;
+        long WAIT_MILLIS = SpotifyConsumer.POLL_DURATION_MS * POLL_COUNT;
         Thread.sleep(WAIT_MILLIS);
 
         System.out.println("shutting down ...");

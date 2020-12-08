@@ -27,7 +27,7 @@ public class DummyConsumer implements Consumer<Long, String> {
         recordsMap = new HashMap<>();
         final List<ConsumerRecord<Long, String>> records = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            records.add(new ConsumerRecord<Long, String>(IOTProducer.TOPIC, 0, i, (long) i, String.valueOf((char) (65 + i))) {
+            records.add(new ConsumerRecord<Long, String>(SpotifyProducer.TOPIC, 0, i, (long) i, String.valueOf((char) (65 + i))) {
                 @Override
                 public String value() {
                     valueCalledCount++;
@@ -35,7 +35,7 @@ public class DummyConsumer implements Consumer<Long, String> {
                 }
             });
         }
-        recordsMap.put(new TopicPartition(IOTProducer.TOPIC, 0), records);
+        recordsMap.put(new TopicPartition(SpotifyProducer.TOPIC, 0), records);
         allRecords = new ConsumerRecords<>(recordsMap);
     }
 

@@ -9,8 +9,6 @@ import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.LongSerializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import io.confluent.kafka.serializers.KafkaAvroSerializer;
-import io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -65,30 +63,6 @@ public class Helper {
         return createProducer(clientID, brokersList);
     }
 
-    public static <T> Producer<Long, T> createAvroProducer(String clientID, String bootstrapServers) {
-        Properties props = new Properties();
-        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
-        props.put(ProducerConfig.CLIENT_ID_CONFIG, clientID);
-        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, LongSerializer.class);
-        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class);
-        props.put(AbstractKafkaSchemaSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, DEFAULT_REGISTRY_URL_CONFIG);
-
-        props.put("acks", "all");
-        props.put("delivery.timeout.ms", 40000);
-        props.put("batch.size", 16384);
-        props.put("linger.ms", 1);
-        props.put("buffer.memory", 33554432);
-
-        return new KafkaProducer<>(props);
-    }
-
-    public static <T> Producer<Long, T> createAvroProducer(String clientID) {
-        String brokersList = BOOTSTRAP_SERVERS;
-        if (brokersList==null || "".equals(brokersList)) brokersList = BOOTSTRAP_SERVERS_LAB_ENV;
-
-        System.out.println("Using brokers: " + brokersList);    
-        return Helper.<T>createAvroProducer(clientID, brokersList);
-    }
 
     /**
      * create a consumer
