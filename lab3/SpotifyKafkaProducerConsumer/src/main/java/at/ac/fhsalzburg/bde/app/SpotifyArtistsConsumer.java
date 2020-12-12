@@ -2,7 +2,7 @@ package at.ac.fhsalzburg.bde.app;
 
 import java.io.IOException;
 import java.time.Duration;
-
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -11,31 +11,31 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.errors.WakeupException;
 
-public class SpotifyConsumer implements Runnable {
-    private final static String CLIENTID = SpotifyConsumer.class.getName();
-    private final static String GROUPID = "SpotifyConsumerGroup";
+public class SpotifyArtistsConsumer implements Runnable {
+    private final static String CLIENTID = SpotifyArtistsConsumer.class.getName();
+    private final static String GROUPID = "SpotifyArtistsConsumerGroup";
     private final AtomicBoolean closed = new AtomicBoolean(false);
     public final static int POLL_DURATION_MS = 1000;
 
     private final Consumer<Long, String> consumer;
 
-    SpotifyConsumer(Consumer<Long, String> consumer) {
+    SpotifyArtistsConsumer(Consumer<Long, String> consumer) {
         this.consumer = consumer;
-        consumer.subscribe(Collections.singletonList(SpotifyProducer.TOPIC));
+        consumer.subscribe(Collections.singletonList(SpotifyArtistsProducer.TOPIC));
     }
 
     private String[] getValuesFromArray(String str) {
         String[] values = new String[0];
         if (str.length() < 6) return values;
         
-        values = str.substring(1,  str.length() - 2).replace("\"", "").replace(" ", "").split(",");
+        values = str.replace("\"", "").split(",");
         return values;
     }
 
     public void run() {
-        System.out.println("=== SPOTIFY CONSUMER ===");
+        System.out.println("=== SPOTIFY ARTISTS CONSUMER ===");
         try {
-            System.out.println("=> Subscribed to " + SpotifyProducer.TOPIC);
+            System.out.println("=> Subscribed to " + SpotifyArtistsProducer.TOPIC);
             System.out.println("==> Waiting for messages...");
             while (!closed.get()) {
                 ConsumerRecords<Long, String> records = consumer.poll(Duration.ofMillis(POLL_DURATION_MS));
@@ -43,18 +43,18 @@ public class SpotifyConsumer implements Runnable {
                 for (ConsumerRecord<Long, String> record : records) {
                     String[] values;
                     values = getValuesFromArray(record.value());
+                    String id = values[0];
+                    String[] artists = Arrays.copyOfRange(values, 1, values.length);
             
                     // Wrong record format
                     if (values.length != 3) continue;
 
                     System.out.printf(
-                            "[Partition: %d, Offset: %d, MsgKey: %s] Id: %s, Year: %s, Tempo: %s;\n",
+                            "[Partition: %d, Offset: %d] Id: %s, Artists: %s;\n",
                             record.partition(),
                             record.offset(),
-                            record.key(),
                             values[0],
-                            values[1],
-                            values[2]);
+                            String.join(",", artists));
                 }
             }
         } catch (WakeupException e) {
@@ -74,7 +74,7 @@ public class SpotifyConsumer implements Runnable {
 
     public static void main(String[] args) throws InterruptedException, IOException {
 
-        SpotifyConsumer r = new SpotifyConsumer(Helper.createConsumer(CLIENTID, GROUPID));
+        SpotifyArtistsConsumer r = new SpotifyArtistsConsumer(Helper.createConsumer(CLIENTID, GROUPID));
         Thread t = new Thread(r);
         t.start();
 

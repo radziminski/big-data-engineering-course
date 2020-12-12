@@ -8,7 +8,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>SpotifyKafkaProducerConsumer</name>
+    <name>SpotifyTemposKafkaProducerConsumer</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -73,21 +73,39 @@
                 <version>1.2.1</version>
                 <executions>
                      <execution>
-                        <id>spotifyproducer</id>
+                        <id>temposproducer</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyProducer</mainClass>
+                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyTemposProducer</mainClass>
                         </configuration>
                     </execution>
                     <execution>
-                        <id>spotifyconsumer</id>
+                        <id>temposconsumer</id>
                         <goals>
                             <goal>java</goal>
                         </goals>
                         <configuration>
-                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyConsumer</mainClass>
+                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyTemposConsumer</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>artistsproducer</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyArtistsProducer</mainClass>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>artistsconsumer</id>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                        <configuration>
+                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyArtistsConsumer</mainClass>
                         </configuration>
                     </execution>
                 </executions>
@@ -100,7 +118,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyProducer</mainClass>
+                            <mainClass>at.ac.fhsalzburg.bde.app.SpotifyTemposProducer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

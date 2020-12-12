@@ -36,7 +36,7 @@ public class SpotifyKafkaTest
     public void testProducerApp() throws InterruptedException {
         int message_count = 10;
         DummyProducer<Long, String> dp = new DummyProducer<>();
-        Thread t = new Thread(new SpotifyProducer(dp, message_count));
+        Thread t = new Thread(new SpotifyTemposProducer(dp, message_count));
         t.start();
         t.join();
 
@@ -49,14 +49,14 @@ public class SpotifyKafkaTest
     public void testConsumer() throws IOException, InterruptedException {
         DummyConsumer dc = new DummyConsumer();
         // start consuming thread
-        SpotifyConsumer r = new SpotifyConsumer(dc);
+        SpotifyTemposConsumer r = new SpotifyTemposConsumer(dc);
         Thread t = new Thread(r);
         t.start();
 
         // Wait 4 iterations
         // each iteration last one second
         int POLL_COUNT = 4;
-        long WAIT_MILLIS = SpotifyConsumer.POLL_DURATION_MS * POLL_COUNT;
+        long WAIT_MILLIS = SpotifyTemposConsumer.POLL_DURATION_MS * POLL_COUNT;
         Thread.sleep(WAIT_MILLIS);
 
         System.out.println("shutting down ...");
@@ -65,6 +65,16 @@ public class SpotifyKafkaTest
         System.out.println("done.");
 
         assertEquals(dc.valueCalledCount, (dc.pollCalledCount * dc.allRecords.count()));
+    }
+
+    public void testArtistsProducerApp() throws InterruptedException {
+        int message_count = 10;
+        DummyProducer<Long, String> dp = new DummyProducer<>();
+        Thread t = new Thread(new SpotifyArtistsProducer(dp, message_count));
+        t.start();
+        t.join();
+
+        assertEquals(dp.getSendCount(), message_count);
     }
 
     /**
