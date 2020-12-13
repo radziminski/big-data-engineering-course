@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: at.ac.fhsalzburg.bde.app.SpotifyKafkaTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.409 s - in at.ac.fhsalzburg.bde.app.SpotifyKafkaTest

@@ -1,0 +1,5 @@
+at/ac/fhsalzburg/bde/app/Helper.class
+at/ac/fhsalzburg/bde/app/SpotifyTemposConsumer.class
+at/ac/fhsalzburg/bde/app/SpotifyArtistsProducer.class
+at/ac/fhsalzburg/bde/app/SpotifyArtistsConsumer.class
+at/ac/fhsalzburg/bde/app/SpotifyTemposProducer.class
