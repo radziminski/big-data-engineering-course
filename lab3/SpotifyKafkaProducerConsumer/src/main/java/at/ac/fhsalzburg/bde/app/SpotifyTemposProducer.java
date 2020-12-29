@@ -81,7 +81,6 @@ public class SpotifyTemposProducer implements Runnable {
                 producer.send(record);
                 System.out.printf("[Sent to %s] Value = %s\n",
                         TOPIC,
-                        key,
                         value);
                 
                 // Used only for testing
