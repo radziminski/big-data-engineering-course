@@ -1,15 +1,17 @@
 //”cassandra-driver” is in the node_modules folder. Redirect if necessary.
-var cassandra = require('cassandra-driver'); 
+//var cassandra = require('cassandra-driver'); 
 //Replace Username and Password with your cluster settings
 //var authProvider = new cassandra.auth.PlainTextAuthProvider('Username', 'Password');
 
+
+
 //var client = new cassandra.Client({contactPoints: contactPoints, authProvider: authProvider, keyspace:'grocery'});
-var client = new cassandra.Client({contactPoints: ['localhost'], localDataCenter: 'datacenter1', keyspace:'xxx'});
+//var client = new cassandra.Client({contactPoints: ['localhost'], localDataCenter: 'datacenter1', keyspace:'xxx'});
 
 const columns = `acousticness,artists,danceability,duration_ms,energy,explicit,id,instrumentalness,key,liveness,loudness,mode,name,popularity,release_date,speechiness,tempo,valence,year`;
 const columnsWithTypes = `acousticness float,artists list<text>,danceability float,duration_ms int,energy float,explicit boolean,id text,instrumentalness float,key int,liveness float,loudness float,mode int,name text,popularity int,release_date date,speechiness float,tempo float,valence float,year int`;
 
-
+importCsv('./data/data.csv', null, 'songs_by_name', columns);
 
 // createTable(client, 'spotify', columnsWithTypes, ['id']);
 // importCsv('./data/data.csv', client, 'spotify', columns);
@@ -17,7 +19,7 @@ const columnsWithTypes = `acousticness float,artists list<text>,danceability flo
 
 // Get the spotify track by the name
 createTable(client, 'songs_by_name', columnsWithTypes, ['name']);
-importCsv('./data/data.csv', client, 'songs_by_name', columns);
+
 
 // Get all spotify tracks by year
 //createTable(client, 'songs_by_year', columnsWithTypes, ['year']);

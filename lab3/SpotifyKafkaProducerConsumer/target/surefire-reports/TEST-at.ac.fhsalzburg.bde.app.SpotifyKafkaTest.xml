@@ -1,64 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="6.409" tests="5" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="6.301" tests="5" errors="0" skipped="0" failures="0">
   <properties>
-    <property name="sun.desktop" value="gnome"/>
-    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
-    <property name="java.specification.version" value="11"/>
-    <property name="sun.cpu.isalist" value=""/>
-    <property name="sun.jnu.encoding" value="UTF-8"/>
-    <property name="java.class.path" value="/home/janek/.m2/repository/org/apache/maven/surefire/surefire-booter/2.22.1/surefire-booter-2.22.1.jar:/home/janek/.m2/repository/org/apache/maven/surefire/surefire-api/2.22.1/surefire-api-2.22.1.jar:/home/janek/.m2/repository/org/apache/maven/surefire/surefire-logger-api/2.22.1/surefire-logger-api-2.22.1.jar:/home/janek/Desktop/bde/KafkaProducerConsumer/target/test-classes:/home/janek/Desktop/bde/KafkaProducerConsumer/target/classes:/home/janek/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/home/janek/.m2/repository/org/apache/kafka/kafka-clients/2.5.0/kafka-clients-2.5.0.jar:/home/janek/.m2/repository/com/github/luben/zstd-jni/1.4.4-7/zstd-jni-1.4.4-7.jar:/home/janek/.m2/repository/org/lz4/lz4-java/1.7.1/lz4-java-1.7.1.jar:/home/janek/.m2/repository/org/xerial/snappy/snappy-java/1.1.7.3/snappy-java-1.1.7.3.jar:/home/janek/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/janek/.m2/repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar:/home/janek/.m2/repository/org/slf4j/slf4j-log4j12/1.7.30/slf4j-log4j12-1.7.30.jar:/home/janek/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:/home/janek/.m2/repository/org/apache/maven/surefire/surefire-junit3/2.22.1/surefire-junit3-2.22.1.jar"/>
-    <property name="java.vm.vendor" value="Ubuntu"/>
+    <property name="java.specification.version" value="15"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1250"/>
+    <property name="java.class.path" value="C:\Users\Janek\.m2\repository\org\apache\maven\surefire\surefire-booter\2.22.1\surefire-booter-2.22.1.jar;C:\Users\Janek\.m2\repository\org\apache\maven\surefire\surefire-api\2.22.1\surefire-api-2.22.1.jar;C:\Users\Janek\.m2\repository\org\apache\maven\surefire\surefire-logger-api\2.22.1\surefire-logger-api-2.22.1.jar;C:\Users\Janek\Documents\ComputerScience\Projects\other\big-data-engineering-course\lab3\SpotifyKafkaProducerConsumer\target\test-classes;C:\Users\Janek\Documents\ComputerScience\Projects\other\big-data-engineering-course\lab3\SpotifyKafkaProducerConsumer\target\classes;C:\Users\Janek\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\Janek\.m2\repository\org\apache\kafka\kafka-clients\2.5.0\kafka-clients-2.5.0.jar;C:\Users\Janek\.m2\repository\com\github\luben\zstd-jni\1.4.4-7\zstd-jni-1.4.4-7.jar;C:\Users\Janek\.m2\repository\org\lz4\lz4-java\1.7.1\lz4-java-1.7.1.jar;C:\Users\Janek\.m2\repository\org\xerial\snappy\snappy-java\1.1.7.3\snappy-java-1.1.7.3.jar;C:\Users\Janek\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\Janek\.m2\repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar;C:\Users\Janek\.m2\repository\org\slf4j\slf4j-log4j12\1.7.30\slf4j-log4j12-1.7.30.jar;C:\Users\Janek\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;C:\Users\Janek\.m2\repository\org\apache\maven\surefire\surefire-junit3\2.22.1\surefire-junit3-2.22.1.jar"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="java.vendor.url" value="https://ubuntu.com/"/>
-    <property name="user.timezone" value=""/>
-    <property name="java.vm.specification.version" value="11"/>
-    <property name="os.name" value="Linux"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Warsaw"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="15"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="user.country" value="US"/>
-    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter /home/janek/Desktop/bde/KafkaProducerConsumer/target/surefire 2020-12-12T23-14-32_563-jvmRun1 surefire9738295647797177846tmp surefire_04672271408607087610tmp"/>
+    <property name="user.country" value="PL"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-15.0.1\bin"/>
+    <property name="sun.java.command" value="org.apache.maven.surefire.booter.ForkedBooter C:\Users\Janek\AppData\Local\Temp\surefire18156534153582559900 2020-12-29T16-37-21_401-jvmRun1 surefire17869151841677351216tmp surefire_010117782352112417456tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="/home/janek/Desktop/bde/KafkaProducerConsumer/target/test-classes:/home/janek/Desktop/bde/KafkaProducerConsumer/target/classes:/home/janek/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar:/home/janek/.m2/repository/org/apache/kafka/kafka-clients/2.5.0/kafka-clients-2.5.0.jar:/home/janek/.m2/repository/com/github/luben/zstd-jni/1.4.4-7/zstd-jni-1.4.4-7.jar:/home/janek/.m2/repository/org/lz4/lz4-java/1.7.1/lz4-java-1.7.1.jar:/home/janek/.m2/repository/org/xerial/snappy/snappy-java/1.1.7.3/snappy-java-1.1.7.3.jar:/home/janek/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/janek/.m2/repository/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar:/home/janek/.m2/repository/org/slf4j/slf4j-log4j12/1.7.30/slf4j-log4j12-1.7.30.jar:/home/janek/.m2/repository/log4j/log4j/1.2.17/log4j-1.2.17.jar:"/>
+    <property name="surefire.test.class.path" value="C:\Users\Janek\Documents\ComputerScience\Projects\other\big-data-engineering-course\lab3\SpotifyKafkaProducerConsumer\target\test-classes;C:\Users\Janek\Documents\ComputerScience\Projects\other\big-data-engineering-course\lab3\SpotifyKafkaProducerConsumer\target\classes;C:\Users\Janek\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\Janek\.m2\repository\org\apache\kafka\kafka-clients\2.5.0\kafka-clients-2.5.0.jar;C:\Users\Janek\.m2\repository\com\github\luben\zstd-jni\1.4.4-7\zstd-jni-1.4.4-7.jar;C:\Users\Janek\.m2\repository\org\lz4\lz4-java\1.7.1\lz4-java-1.7.1.jar;C:\Users\Janek\.m2\repository\org\xerial\snappy\snappy-java\1.1.7.3\snappy-java-1.1.7.3.jar;C:\Users\Janek\.m2\repository\org\slf4j\slf4j-api\1.7.30\slf4j-api-1.7.30.jar;C:\Users\Janek\.m2\repository\com\google\code\gson\gson\2.2.4\gson-2.2.4.jar;C:\Users\Janek\.m2\repository\org\slf4j\slf4j-log4j12\1.7.30\slf4j-log4j12-1.7.30.jar;C:\Users\Janek\.m2\repository\log4j\log4j\1.2.17\log4j-1.2.17.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="/home/janek"/>
-    <property name="user.language" value="en"/>
+    <property name="user.home" value="C:\Users\Janek"/>
+    <property name="user.language" value="pl"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.version.date" value="2020-11-04"/>
-    <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
-    <property name="file.separator" value="/"/>
-    <property name="basedir" value="/home/janek/Desktop/bde/KafkaProducerConsumer"/>
+    <property name="java.version.date" value="2020-10-20"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-15.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Janek\Documents\ComputerScience\Projects\other\big-data-engineering-course\lab3\SpotifyKafkaProducerConsumer"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="11.0.9.1+1-Ubuntu-0ubuntu1.20.04"/>
-    <property name="user.name" value="janek"/>
-    <property name="path.separator" value=":"/>
-    <property name="os.version" value="5.4.0-56-generic"/>
-    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="file.encoding" value="UTF-8"/>
-    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="localRepository" value="/home/janek/.m2/repository"/>
-    <property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-lts"/>
-    <property name="java.io.tmpdir" value="/tmp"/>
-    <property name="java.version" value="11.0.9.1"/>
-    <property name="user.dir" value="/home/janek/Desktop/bde/KafkaProducerConsumer"/>
+    <property name="java.runtime.version" value="15.0.1+9-18"/>
+    <property name="user.name" value="Janek"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1250"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Janek\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Janek\AppData\Local\Temp\"/>
+    <property name="java.version" value="15.0.1"/>
+    <property name="user.dir" value="C:\Users\Janek\Documents\ComputerScience\Projects\other\big-data-engineering-course\lab3\SpotifyKafkaProducerConsumer"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
-    <property name="sun.os.patch.level" value="unknown"/>
-    <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-15.0.1\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python38\Scripts\;C:\Python38\;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Users\Janek\AppData\Local\Microsoft\WindowsApps;C:\Users\Janek\.dotnet\tools;C:\Program Files (x86)\Calibre2\;C:\Program Files\Git\cmd;C:\Users\Janek\AppData\Local\Microsoft\WindowsApps;C:\Users\Janek\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Janek\AppData\Roaming\npm;C:\Program Files\MongoDB\Server\4.2\bin;C:\Users\Janek\.dotnet\tools;C:\src\flutter\bin;C:\src\apache-maven-3.6.3\bin;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.vendor" value="Ubuntu"/>
-    <property name="java.vm.version" value="11.0.9.1+1-Ubuntu-0ubuntu1.20.04"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="15.0.1+9-18"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="java.class.version" value="55.0"/>
+    <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="testProducerApp" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="1.889"/>
-  <testcase name="testConsumer" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="4.022"/>
-  <testcase name="testArtistsProducerApp" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="0.487"/>
-  <testcase name="testIsNullPickValue" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="0.002"/>
+  <testcase name="testConsumer" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="4.012"/>
   <testcase name="testIsNull" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="0"/>
+  <testcase name="testProducerApp" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="1.824"/>
+  <testcase name="testArtistsProducerApp" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="0.461"/>
+  <testcase name="testIsNullPickValue" classname="at.ac.fhsalzburg.bde.app.SpotifyKafkaTest" time="0"/>
 </testsuite>

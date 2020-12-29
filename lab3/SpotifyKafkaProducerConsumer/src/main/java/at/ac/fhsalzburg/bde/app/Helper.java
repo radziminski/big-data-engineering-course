@@ -28,7 +28,8 @@ public class Helper {
 
     // environment variable set/read
     // static set variables
-    public final static String BOOTSTRAP_SERVERS_LAB_ENV = "node1:9092, node2:9092, node3:9092, node4:9092";
+    // public final static String BOOTSTRAP_SERVERS_LAB_ENV = "node1:9092, node2:9092, node3:9092, node4:9092";
+    public final static String BOOTSTRAP_SERVERS_LAB_ENV = "node1.bde.fh-salzburg.ac.at:9092, node2.bde.fh-salzburg.ac.at:9092, node3.bde.fh-salzburg.ac.at:9092, node4.bde.fh-salzburg.ac.at:9092";
     public final static String BOOTSTRAP_SERVERS_LOCAL = "localhost:9092";
 
     // read system environment variables

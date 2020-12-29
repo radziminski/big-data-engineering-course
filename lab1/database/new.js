@@ -1,14 +1,17 @@
 //”cassandra-driver” is in the node_modules folder. Redirect if necessary.
-var cassandra = require('cassandra-driver'); 
+
+
+
+//var cassandra = require('cassandra-driver'); 
 //Replace Username and Password with your cluster settings
 //var authProvider = new cassandra.auth.PlainTextAuthProvider('Username', 'Password');
 
 //var client = new cassandra.Client({contactPoints: contactPoints, authProvider: authProvider, keyspace:'grocery'});
-var client = new cassandra.Client({contactPoints: ['localhost'], localDataCenter: 'datacenter1', keyspace:'xxx'});
+//var client = new cassandra.Client({contactPoints: ['localhost'], localDataCenter: 'datacenter1', keyspace:'xxx'});
 
 const columns = `video_id,trending_date,title,channel_title,category_id,publish_time,tags,views,likes,dislikes,comment_count,thumbnail_link,comments_disabled,ratings_disabled,video_error_or_removed,description,region`;
 const columnsWithTypes = `video_id text,trending_date date,title text,channel_title text,category_id text,publish_time timestamp,tags list<text>,views int,likes int,dislikes int,comment_count int,thumbnail_link text,comments_disabled boolean,ratings_disabled boolean,video_error_or_removed boolean,description text,region text`;
-
+importCsv('./data/output.csv', null, 'videos', columns);
 // CREATE KEYSPACE xxx WITH REPLICATION={'class':'SimpleStrategy', 'replication_factor':3}
 
 createTable(client, 'videos', columnsWithTypes, ['video_id']);
@@ -67,7 +70,7 @@ function createTable(client, name, columnsWithTypes, primaryKeys = [], clusterin
 function importCsv(fileName, client, table, columns, delimiter = ',', quote = '"') {
   var query = `COPY ${table}(${columns})
   FROM '${fileName}' WITH DELIMITER='${delimiter}' AND HEADER=TRUE AND QUOTE='${quote}' AND CHUNKSIZE=50 AND NUMPROCESSES=4 AND MAXATTEMPTS=0`;
-  console.log("Executeing: " + query);
+  console.log(query);
   client.execute(query, [], (err, result) => {
     if(err) {
     console.log('execute failed: ${err}', err);

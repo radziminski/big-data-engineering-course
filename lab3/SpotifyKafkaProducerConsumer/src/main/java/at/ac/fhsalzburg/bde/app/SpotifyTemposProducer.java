@@ -77,9 +77,9 @@ public class SpotifyTemposProducer implements Runnable {
                 }
 
                 value = getRecordValue(id, year, tempo);
-                record = new ProducerRecord<>(TOPIC, key, value);
+                record = new ProducerRecord(TOPIC, value);
                 producer.send(record);
-                System.out.printf("[Sent to %s] MsgKey = %d, Value = %s\n",
+                System.out.printf("[Sent to %s] Value = %s\n",
                         TOPIC,
                         key,
                         value);
