@@ -48,10 +48,9 @@ public class SpotifyTemposConsumer implements Runnable {
                     if (values.length != 3) continue;
 
                     System.out.printf(
-                            "[Partition: %d, Offset: %d, MsgKey: %s] Id: %s, Year: %s, Tempo: %s;\n",
+                            "[Partition: %d, Offset: %d] Id: %s, Year: %s, Tempo: %s;\n",
                             record.partition(),
                             record.offset(),
-                            record.key(),
                             values[0],
                             values[1],
                             values[2]);
